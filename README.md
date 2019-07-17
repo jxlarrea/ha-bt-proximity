@@ -177,7 +177,7 @@ Once the signal strength is retrieved, a proximity value ranging from 0 (closest
 ### Home Assistant Configuration
 
 1. Install Mosquitto MQTT Broker in Home Assistant. [Instructions here](https://www.home-assistant.io/addons/mosquitto/).
-2. Add a new MQTT sensor in your Home Assistant configuration.yaml file. Make sure that the value in `state_topic` matches the room name and mac address that you previously entered in the `index.js` file:
+2. Add a new MQTT sensor in your Home Assistant configuration.yaml file. Make sure that the value in `state_topic` matches the room name and BT mac address that you previously entered in the `index.js` file:
 
     ```
     sensor:
@@ -187,3 +187,4 @@ Once the signal strength is retrieved, a proximity value ranging from 0 (closest
           unit_of_measurement: 'level'
           name: 'Xavier Bedroom'
     ```
+    **NOTE:** You can add multiple mqtt sensors if you want to track more devices. Just make sure that the BT mac addresses match those entered in the `index.js` script file.
