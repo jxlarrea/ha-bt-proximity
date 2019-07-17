@@ -12,7 +12,23 @@ Once the signal strength is retrieved, a proximity value ranging from 0 (closest
 2. Micro SD Card (2GB size minimum)
 3. A Home Assistant installation up and running.
 
-### OS Setup
+### Home Assistant Configuration
+
+1. Install Mosquitto MQTT Broker in Home Assistant. [Instructions here](https://www.home-assistant.io/addons/mosquitto/).
+2. Add a new MQTT sensor in your Home Assistant `configuration.yaml` file. Make sure that the value in `state_topic` matches the room name and BT mac address of the device you want to track:
+
+    ```
+    sensor:
+        - platform: mqtt
+          state_topic: 'location/bedroom/B1:F1:XX:69:1E:ZZ'
+          value_template: '{{ value_json.proximity }}'
+          unit_of_measurement: 'level'
+          name: 'Xavier Bedroom Proximity'
+    ```
+    **NOTE:** You can add multiple mqtt sensors if you want to track more devices.
+3. Save `configuration.yaml` and restart Home Assistant.
+
+### SD Card OS Setup
 
 1. Download latest version of [Raspbian Jessie Lite Stretch](https://downloads.raspberrypi.org/raspbian_lite_latest)
 2. Download [balenaEtcher](https://etcher.io).
@@ -127,7 +143,7 @@ Once the signal strength is retrieved, a proximity value ranging from 0 (closest
     ```
     nano index.js
     ```
-    Then edit the first few lines in the file with your own values:
+    Then edit the first few lines with your own values for the MQTT Broker and tracked BT mac addresses:
     
     ```
     // MQTT Broker details
@@ -142,10 +158,11 @@ Once the signal strength is retrieved, a proximity value ranging from 0 (closest
     // Tracked BT mac addresses
 
     var owners = [
-    "B1:F1:XX:69:1E:ZZ", // Phone bluetooth mac address;
-    "B2:F6:YY:69:CC:AA" // You can track multiple devices;
+    "B1:F1:XX:69:1E:ZZ", // Pixel 2 Bluetooth Mac Address;
+    "B2:F6:YY:69:CC:AA" // You can track multiple devices, just keep adding them to the array;
     ];
     ```
+    **NOTE:** The mac addresses *MUST* match those entered previously in the Home Assistant sensor definition.
 11. Setup the script to run as a service
 
     ```
@@ -173,19 +190,7 @@ Once the signal strength is retrieved, a proximity value ranging from 0 (closest
     sudo systemctl enable ha-bt-proximity.service
     sudo systemctl start ha-bt-proximity.service
     ```
+    
+### You are done!
 
-### Home Assistant Configuration
-
-1. Install Mosquitto MQTT Broker in Home Assistant. [Instructions here](https://www.home-assistant.io/addons/mosquitto/).
-2. Add a new MQTT sensor in your Home Assistant `configuration.yaml` file. Make sure that the value in `state_topic` matches the room name and BT mac address that you previously entered in the `index.js` file:
-
-    ```
-    sensor:
-        - platform: mqtt
-          state_topic: 'location/bedroom/B1:F1:XX:69:1E:ZZ'
-          value_template: '{{ value_json.proximity }}'
-          unit_of_measurement: 'level'
-          name: 'Xavier Bedroom'
-    ```
-    **NOTE:** You can add multiple mqtt sensors if you want to track more devices. Just make sure that the BT mac addresses match those entered in the `index.js` script file.
-3. Save `configuration.yaml` and restart Home Assistant.
+If all went well, you will now see in Home Assistant the previously added sensor showing the relative proximity of your tracked devices. The sensor proxmity value ranges from 0 (closest proximity possible) to -100 (undetectable).
