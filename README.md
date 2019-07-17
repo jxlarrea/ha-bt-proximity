@@ -51,7 +51,7 @@ Once the signal strength is retrieved, a proximity value ranging from 0 (closest
     sudo reboot
     ```
 4. Setup Bluetooth:
-    * Install the latest bluetooth drivers and firmwaret:
+    * Install the latest bluetooth drivers and firmware:
         ```
         #install bluetooth drivers for Pi Zero W
         sudo apt-get install pi-bluetooth
