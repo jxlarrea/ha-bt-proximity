@@ -98,7 +98,7 @@ Once the signal strength is retrieved, a proximity value ranging from 0 (closest
     sudo apt-get update
     sudo apt-get install nodejs npm
     ```
-7. Install ha-bt-proximity:
+7. Install the ha-bt-proximity script:
     ```
     #install git
     cd ~
@@ -113,11 +113,11 @@ Once the signal strength is retrieved, a proximity value ranging from 0 (closest
     #install dependencies
     npm install
     ```
-10. Configure ha-bt-proximity:
+10. Configure the ha-bt-proximity script:
     ```
     nano index.js
     ```
-    Then edit the first few lines of the file:
+    Then edit the first few lines in the file with your own values:
     ```
     // MQTT Broker details
 
@@ -132,7 +132,30 @@ Once the signal strength is retrieved, a proximity value ranging from 0 (closest
 
     var owners = [
     "B1:F1:XX:69:1E:ZZ", // Phone bluetooth mac address;
-    "B2:F6:YY:69:CC:AA" // You track multiple devices;
+    "B2:F6:YY:69:CC:AA" // You can track multiple devices;
     ];
     ```
-   
+11. Setup the script to run as a service
+    ```
+    sudo nano /etc/systemd/system/ha-bt-proximity.service
+    ```
+    Add the following service definition:
+    ```
+    [Unit]
+    Description=HA BT Proximity Service
+
+    [Service]
+    User=root
+    ExecStart=/usr/bin/node /home/pi/ha-bt-proximity/index.js
+    WorkingDirectory=/home/pi/ha-bt-proximity
+    Restart=always
+    RestartSec=10
+
+    [Install]
+    WantedBy=multi-user.target
+    ```
+    Finally, enable the newly created service:
+    ```
+    sudo systemctl enable ha-bt-proximity.service
+    sudo systemctl start ha-bt-proximity.service
+    ```
