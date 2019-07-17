@@ -75,8 +75,7 @@ Once the signal strength is retrieved, a proximity value ranging from 0 (closest
     * Save and reboot
         ```
         sudo reboot
-        ```
- 
+        ``` 
  5. Install Mosquitto MQTT Broker 
     ```
     # get repo key
@@ -94,3 +93,9 @@ Once the signal strength is retrieved, a proximity value ranging from 0 (closest
     sudo apt-get update
     sudo apt-get install libmosquitto-dev mosquitto mosquitto-clients
     ```
+ 6. Install NodeJS
+    ```
+    sudo apt-get update
+    sudo apt-get install nodejs npm
+    ```
+   
