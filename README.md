@@ -76,7 +76,7 @@ Once the signal strength is retrieved, a proximity value ranging from 0 (closest
         ```
         sudo reboot
         ``` 
- 5. Install Mosquitto MQTT Broker 
+ 5. Install Mosquitto MQTT Broker: 
     ```
     # get repo key
     wget http://repo.mosquitto.org/debian/mosquitto-repo.gpg.key
@@ -93,9 +93,46 @@ Once the signal strength is retrieved, a proximity value ranging from 0 (closest
     sudo apt-get update
     sudo apt-get install libmosquitto-dev mosquitto mosquitto-clients
     ```
- 6. Install NodeJS
+ 6. Install NodeJS:
     ```
     sudo apt-get update
     sudo apt-get install nodejs npm
+    ```
+7. Install ha-bt-proximity:
+    ```
+    #install git
+    cd ~
+    sudo apt-get install git
+
+    #clone this repository
+    git clone git://github.com/jxlarrea/ha-bt-proximity
+
+    #enter ha-bt-proximity directory
+    cd ha-bt-proximity
+
+    #install dependencies
+    npm install
+    ```
+10. Configure ha-bt-proximity:
+    ```
+    nano index.js
+    ```
+    Then edit the first few lines of the file:
+    ```
+    // MQTT Broker details
+
+    var mqtt_host = "192.168.1.x"; // Your MTTQ broker IP address
+    var mqtt_port = 1883; // Your MTTQ broker port
+    var mqtt_user = "mqtt"; // Your MQTT broker username
+    var mqtt_password = "mqtt"; // Your MQTT broker password
+    var mqtt_room = "bedroom" // Location where the Raspberry Pi device will be located;
+
+
+    // Tracked BT mac addresses
+
+    var owners = [
+    "B1:F1:XX:69:1E:ZZ", // Phone bluetooth mac address;
+    "B2:F6:YY:69:CC:AA" // You track multiple devices;
+    ];
     ```
    
