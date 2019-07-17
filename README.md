@@ -28,7 +28,7 @@ Once the signal strength is retrieved, a proximity value ranging from 0 (closest
     **NOTE:** You can add multiple mqtt sensors if you want to track more devices.
 3. Save `configuration.yaml` and restart Home Assistant.
 
-### SD Card OS Setup
+### Raspberry Pi Zero W OS Setup
 
 1. Download latest version of [Raspbian Jessie Lite Stretch](https://downloads.raspberrypi.org/raspbian_lite_latest)
 2. Download [balenaEtcher](https://etcher.io).
