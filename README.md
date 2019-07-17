@@ -1,6 +1,6 @@
 # ha-bt-proximity
 
-## Distributed Bluetooth Room Presence Sensor for Home Assistant
+## Distributed Bluetooth Room Presence for Home Assistant
 
 This is a complete DIY solution for room presence/proximity detection in [Home Assistant](https://www.home-assistant.io/). It uses a [Raspberry Zero W](https://www.raspberrypi.org/products/raspberry-pi-zero-w/) to track the proximity of phones, smartwatches, etc. via bluetooth. The relative proximity is determined by querying the [RSSI](https://www.bluetooth.com/blog/proximity-and-rssi/) (signal strength) of the tracked device using a combination of `rfcomm` and `hcitool` commands. 
 
