@@ -39,10 +39,12 @@ Once the signal strength is retrieved, a proximity value ranging from 0 (closest
 
 1. SSH into the Raspberry Pi (password: raspberry)
 2. Change the default password:
+
     ```
     sudo passwd pi
     ```
 3. Update Raspbian and upgrade the Raspberry Pi Zero W firmware:
+
     ```
     sudo apt-get update
     sudo apt-get upgrade -y
@@ -52,6 +54,7 @@ Once the signal strength is retrieved, a proximity value ranging from 0 (closest
     ```
 4. Setup Bluetooth:
     * Install the latest bluetooth drivers and firmware:
+    
         ```
         #install bluetooth drivers for Pi Zero W
         sudo apt-get install pi-bluetooth
@@ -64,19 +67,23 @@ Once the signal strength is retrieved, a proximity value ranging from 0 (closest
         sudo reboot
         ```
     * Add SP profile to the bluetooth daemon.
+    
         ```
         sudo nano /etc/systemd/system/dbus-org.bluez.service 
         ```
     * Add ' -C' at the end of the 'ExecStart=' line, to start the bluetooth daemon in 'compatibility' mode. Add a new 'ExecStartPost='   immediately after that line, to add the SP Profile. The two lines should look like this:
+    
         ```
         ExecStart=/usr/lib/bluetooth/bluetoothd -C
         ExecStartPost=/usr/bin/sdptool add SP
         ```
     * Save and reboot
+    
         ```
         sudo reboot
         ``` 
  5. Install Mosquitto MQTT Broker: 
+ 
     ```
     # get repo key
     wget http://repo.mosquitto.org/debian/mosquitto-repo.gpg.key
@@ -94,11 +101,13 @@ Once the signal strength is retrieved, a proximity value ranging from 0 (closest
     sudo apt-get install libmosquitto-dev mosquitto mosquitto-clients
     ```
  6. Install NodeJS:
+ 
     ```
     sudo apt-get update
     sudo apt-get install nodejs npm
     ```
 7. Install the ha-bt-proximity script:
+
     ```
     #install git
     cd ~
@@ -114,10 +123,12 @@ Once the signal strength is retrieved, a proximity value ranging from 0 (closest
     npm install
     ```
 10. Configure the ha-bt-proximity script:
+
     ```
     nano index.js
     ```
     Then edit the first few lines in the file with your own values:
+    
     ```
     // MQTT Broker details
 
@@ -136,10 +147,12 @@ Once the signal strength is retrieved, a proximity value ranging from 0 (closest
     ];
     ```
 11. Setup the script to run as a service
+
     ```
     sudo nano /etc/systemd/system/ha-bt-proximity.service
     ```
     Add the following service definition:
+    
     ```
     [Unit]
     Description=HA BT Proximity Service
@@ -155,6 +168,7 @@ Once the signal strength is retrieved, a proximity value ranging from 0 (closest
     WantedBy=multi-user.target
     ```
     Finally, enable and start the newly created service:
+    
     ```
     sudo systemctl enable ha-bt-proximity.service
     sudo systemctl start ha-bt-proximity.service
