@@ -154,7 +154,7 @@ Once the signal strength is retrieved, a proximity value ranging from 0 (closest
     [Install]
     WantedBy=multi-user.target
     ```
-    Finally, enable the newly created service:
+    Finally, enable and start the newly created service:
     ```
     sudo systemctl enable ha-bt-proximity.service
     sudo systemctl start ha-bt-proximity.service
