@@ -173,3 +173,17 @@ Once the signal strength is retrieved, a proximity value ranging from 0 (closest
     sudo systemctl enable ha-bt-proximity.service
     sudo systemctl start ha-bt-proximity.service
     ```
+
+### Home Assistant Configuration
+
+1. Install Mosquitto MQTT Broker in Home Assistant. [Instructions here](https://www.home-assistant.io/addons/mosquitto/).
+2. Add a new MQTT sensor in your Home Assistant configuration.yaml file. Make sure that the value in `state_topic` matches the room name and mac address that you previously entered in the `index.js` file:
+
+    ```
+    sensor:
+        - platform: mqtt
+          state_topic: 'location/bedroom/B1:F1:XX:69:1E:ZZ'
+          value_template: '{{ value_json.proximity }}'
+          unit_of_measurement: 'level'
+          name: 'Xavier Bedroom'
+    ```
