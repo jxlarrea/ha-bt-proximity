@@ -72,14 +72,14 @@ Once the signal strength is retrieved, a proximity value ranging from 0 (closest
 
     Install the latest bluetooth drivers and firmware:
     ```
-    #install bluetooth drivers for Pi Zero W
+    # Install BT drivers
     sudo apt-get install pi-bluetooth
 
-    #verify that bluetooth is working
+    # Check that BT is working
     sudo service bluetooth start
     sudo service bluetooth status
 
-    #reboot
+    # Reboot
     sudo reboot
     ```
     
@@ -102,17 +102,17 @@ Once the signal strength is retrieved, a proximity value ranging from 0 (closest
  5. Install Mosquitto MQTT Broker: 
  
     ```
-    # get repo key
+    # Get repository key
     wget http://repo.mosquitto.org/debian/mosquitto-repo.gpg.key
 
-    #add repo
+    # Add repository
     sudo apt-key add mosquitto-repo.gpg.key
 
-    #download appropriate lists file 
+    # Download lists file 
     cd /etc/apt/sources.list.d/
     sudo wget http://repo.mosquitto.org/debian/mosquitto-stretch.list
 
-    #update caches and install 
+    # Update cache and install 
     apt-cache search mosquitto
     sudo apt-get update
     sudo apt-get install libmosquitto-dev mosquitto mosquitto-clients
@@ -126,17 +126,17 @@ Once the signal strength is retrieved, a proximity value ranging from 0 (closest
 7. Install the ha-bt-proximity script:
 
     ```
-    #install git
+    # Install git
     cd ~
     sudo apt-get install git
 
-    #clone this repository
+    # Clone ha-bt-proximity repository
     git clone git://github.com/jxlarrea/ha-bt-proximity
 
-    #enter ha-bt-proximity directory
+    # Enter ha-bt-proximity directory
     cd ha-bt-proximity
 
-    #install dependencies
+    # Install dependencies
     npm install
     ```
 10. Configure the ha-bt-proximity script:
