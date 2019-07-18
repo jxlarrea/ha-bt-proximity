@@ -116,7 +116,6 @@ Once the signal strength is retrieved, a proximity value ranging from 0 (closest
  6. Install Node.js:
  
     ```
-    sudo apt-get update
     sudo apt-get install nodejs npm
     ```
 7. Install the ha-bt-proximity script:
