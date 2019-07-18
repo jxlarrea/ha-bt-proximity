@@ -10,7 +10,7 @@ var mqtt_room = "bedroom" // Location where the Raspberry Pi Zero device will be
 // Tracked BT mac addresses
 
 var owners = [
-"AA:BB:CC:DD:EE:FF" // Bluetooth MAC Address of the phone/device to track. You can add more devices to the array to track more than one person.
+"00:00:00:00:00:00" // Bluetooth MAC Address of the phone/device to track. You can add more devices to the array to track more than one person.
 ];
 
 
