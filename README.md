@@ -65,7 +65,6 @@ Once the signal strength is retrieved, a proximity value ranging from 0 (closest
     sudo apt-get update
     sudo apt-get upgrade -y
     sudo apt-get dist-upgrade -y
-    sudo rpi-update
     sudo reboot
     ```
 4. Setup Bluetooth:
