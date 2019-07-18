@@ -1,8 +1,0 @@
-{
-  "version": "1.0.0",
-  "name": "ha-bt-proximity",
-  "private": true,
-  "dependencies": {
-    "cron": "1.7.1"
-  }
-}
