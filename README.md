@@ -150,7 +150,7 @@ Once the signal strength is retrieved, a proximity value ranging from 0 (closest
     var mqtt_port = 1883; // Your MTTQ broker port
     var mqtt_user = "mqtt_user"; // Your MQTT broker username
     var mqtt_password = "mqtt_pwd"; // Your MQTT broker password
-    var mqtt_room = "bedroom" // Location where the Raspberry Pi device will be located;
+    var mqtt_room = "bedroom"; // Location where the Raspberry Pi device will be located
 
 
     // Tracked BT mac addresses
