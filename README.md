@@ -212,7 +212,11 @@ binary_sensor:
       xavier_bedroom_presence:
         friendly_name: "Xavier Bedroom Presence"
         value_template: >-
-          {{ states('sensor.xavier_bedroom_proximity')|int > -10 }}
+          {% if not (states('sensor.mqtt_xavier_bedroom_proximity') == 'unknown') and (states('sensor.mqtt_xavier_bedroom_proximity')|int > -10) %}
+            true
+          {% else %}
+            false
+          {% endif %}
 ```
 You will have to figure out the optimal proximity value (-10 above) to consider the device as "present" in the room. This will vary greatly based on the strength of your device's BT signal, room size, line of sight, etc.
 
