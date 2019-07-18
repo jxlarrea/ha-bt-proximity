@@ -214,7 +214,7 @@ binary_sensor:
         value_template: >-
           {{ states('sensor.mqtt_xavier_bedroom_proximity')|int > -10 }}
 ```
-You will have to figure out the optimal proximity value to consider the device as "present" in the room. This will vary greatly based on the strength of your device's BT signal, room size, line of sight, etc.
+You will have to figure out the optimal proximity value (-10 above) to consider the device as "present" in the room. This will vary greatly based on the strength of your device's BT signal, room size, line of sight, etc.
 
 
 ### Acknowledgements 
