@@ -123,7 +123,7 @@ Once the signal strength is retrieved, a proximity value ranging from 0 (closest
     ```
     # Install git
     cd ~
-    sudo apt-get install git
+    sudo apt-get install git -y
 
     # Clone ha-bt-proximity repository
     git clone git://github.com/jxlarrea/ha-bt-proximity
