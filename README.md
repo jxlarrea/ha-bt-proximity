@@ -15,7 +15,7 @@ Once the signal strength is retrieved, a proximity value ranging from 0 (closest
 ### Home Assistant Configuration
 
 1. Install Mosquitto MQTT Broker in Home Assistant. [Instructions here](https://www.home-assistant.io/addons/mosquitto/).
-2. Add a new MQTT sensor in your Home Assistant `configuration.yaml` file. Make sure that the value in `state_topic` matches the room name and BT mac address of the device you want to track:
+2. Add a new MQTT sensor in your Home Assistant `configuration.yaml` file. Make sure to replace the value in `state_topic` to match the name of the room you will place the Raspberry Pi Zero in (bedroom, living room, kitchen, etc.) and replace `00:00:00:00:00:00` for the actual Bluetooth MAC address of the device you want to track:
 
     ```
     sensor:
