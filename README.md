@@ -58,12 +58,12 @@ Once the signal strength is retrieved, a proximity value ranging from 0 (closest
 1. SSH into the Raspberry Pi (username: pi password: raspberry)
 2. Change the default password:
 
-    ```sh
+    ```console
     sudo passwd pi
     ```
 3. Upgrade packages and Raspbian to the latest version:
 
-    ```sh
+    ```console
     sudo apt-get update
     sudo apt-get upgrade -y
     sudo apt-get dist-upgrade -y
@@ -72,7 +72,7 @@ Once the signal strength is retrieved, a proximity value ranging from 0 (closest
 4. Setup Bluetooth:
 
     Install the latest bluetooth drivers and firmware:
-    ```
+    ```console
     # Install BT drivers
     sudo apt-get install pi-bluetooth -y
 
@@ -82,7 +82,7 @@ Once the signal strength is retrieved, a proximity value ranging from 0 (closest
     ```
     
     Add SP profile to the bluetooth daemon.
-    ```
+    ```console
     sudo nano /etc/systemd/system/dbus-org.bluez.service 
     ```
     
@@ -93,13 +93,13 @@ Once the signal strength is retrieved, a proximity value ranging from 0 (closest
     ```
     
     Save and reboot
-    ```
+    ```console
     sudo reboot
     ``` 
     
  5. Install Mosquitto MQTT Broker client: 
  
-    ```
+    ```console
     # Get repository key
     wget http://repo.mosquitto.org/debian/mosquitto-repo.gpg.key
 
@@ -117,12 +117,12 @@ Once the signal strength is retrieved, a proximity value ranging from 0 (closest
     ```
  6. Install Node.js:
  
-    ```
+    ```console
     sudo apt-get install nodejs npm -y
     ```
 7. Install the ha-bt-proximity script:
 
-    ```
+    ```console
     # Install git
     cd ~
     sudo apt-get install git -y
@@ -138,7 +138,7 @@ Once the signal strength is retrieved, a proximity value ranging from 0 (closest
     ```
 10. Configure the ha-bt-proximity script:
 
-    ```
+    ```console
     nano index.js
     ```
     Then edit the first few lines with your own values for the MQTT Broker connection and Bluetooth MAC addressed that you want tracked:
@@ -163,7 +163,7 @@ Once the signal strength is retrieved, a proximity value ranging from 0 (closest
     **NOTE:** The mac addresses *MUST* match those entered previously in the Home Assistant sensor definition.
 11. Setup the script to run as a service
 
-    ```
+    ```console
     sudo nano /etc/systemd/system/ha-bt-proximity.service
     ```
     Add the following service definition:
@@ -184,13 +184,13 @@ Once the signal strength is retrieved, a proximity value ranging from 0 (closest
     ```
     Finally, enable and start the newly created service:
     
-    ```
+    ```console
     sudo systemctl enable ha-bt-proximity.service
     sudo systemctl start ha-bt-proximity.service
     ```
     
     **NOTE:** If you need to modify the `index.js` script in the future, make sure to restart the service using:
-    ```
+    ```console
     sudo systemctl restart ha-bt-proximity.service
     ```
     
