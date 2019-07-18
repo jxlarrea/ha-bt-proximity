@@ -192,6 +192,11 @@ Once the signal strength is retrieved, a proximity value ranging from 0 (closest
     sudo systemctl start ha-bt-proximity.service
     ```
     
+    **NOTE:** If you need to modify the index.js script in the future, make sure to restart the service using:
+    ```
+    sudo systemctl restart ha-bt-proximity.service
+    ```
+    
 ### You are done!
 
 If all went well, you will now see in Home Assistant the previously added sensor showing the relative proximity of your tracked devices. The sensor proximity value ranges from 0 (closest proximity possible) to -100 (undetectable).
