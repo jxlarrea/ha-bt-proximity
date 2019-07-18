@@ -94,7 +94,7 @@ function getRssiAndPublish(owner) {
 
 
 var job = new CronJob({
-	cronTime: '0/5 * * * * *',
+	cronTime: '0,30 * * * * *',
 	onTick: function() {
 		owners.forEach(function(owner) {
 			getRssiAndPublish(owner);
