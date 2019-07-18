@@ -193,4 +193,16 @@ Once the signal strength is retrieved, a proximity value ranging from 0 (closest
     
 ### You are done!
 
-If all went well, you will now see in Home Assistant the previously added sensor showing the relative proximity of your tracked devices. The sensor proxmity value ranges from 0 (closest proximity possible) to -100 (undetectable).
+If all went well, you will now see in Home Assistant the previously added sensor showing the relative proximity of your tracked devices. The sensor proximity value ranges from 0 (closest proximity possible) to -100 (undetectable).
+
+You can use this proximity value to setup Automations based on room presence in your home or even place multiple Raspberry Pi Zero W's around your place to triangulate your position.
+
+### Acknowledgements 
+
+Before working on this, I tried to find an already existing room presence detection solution for Home Assistant. I came across 2 in particular that became the inspiration to create this:
+
+1. **@andrewjfreyer's presence**: This seemed like the solutions I was looking for. Unfortunately, his approach only works as a binary sensor: If multiple Raspberry Pi Zero W in different rooms around your house detect your tracked device bluetooth signal, they will all mark as if you are present in their respective rooms at the same time. You can check out his repository [here](https://github.com/andrewjfreyer/presence).
+
+2. **@seangreen2's Google Home approach**: This was the first solution I looked into. It uses Google Home to basically do the same thing I'm doing. Unfortunately, it relied on an unofficial Google Home API that stopped working a long time ago. He updated his solution and now adds Samsung Smartthings to the equation. You can read more about it in his [Reddit post](https://www.reddit.com/r/homeassistant/comments/a9sj4y/i_successfully_got_room_presence_working_using/).
+
+Hope some of you find this useful!
