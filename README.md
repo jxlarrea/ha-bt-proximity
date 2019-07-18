@@ -99,7 +99,7 @@ Once the signal strength is retrieved, a proximity value ranging from 0 (closest
     sudo reboot
     ``` 
     
- 5. Install Mosquitto MQTT Broker: 
+ 5. Install Mosquitto MQTT Broker client: 
  
     ```
     # Get repository key
