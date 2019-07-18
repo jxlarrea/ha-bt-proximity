@@ -17,7 +17,7 @@ Once the signal strength is retrieved, a proximity value ranging from 0 (closest
 1. Install Mosquitto MQTT Broker in Home Assistant. [Instructions here](https://www.home-assistant.io/addons/mosquitto/).
 2. Add a new MQTT sensor in your Home Assistant `configuration.yaml` file. Make sure to replace the value in `state_topic` to match the name of the room you will place the Raspberry Pi Zero at (`bedroom`, `living room`, `kitchen`, etc.) and replace `00:00:00:00:00:00` for the actual Bluetooth MAC address of the device you want to track:
 
-    ```
+    ```yaml
     sensor:
         - platform: mqtt
           state_topic: 'location/bedroom/00:00:00:00:00:00'
@@ -146,7 +146,7 @@ Once the signal strength is retrieved, a proximity value ranging from 0 (closest
     ```
     Then edit the first few lines with your own values for the MQTT Broker connection and Bluetooth MAC addressed that you want tracked:
     
-    ```
+    ```javascript
     // MQTT Broker details
 
     var mqtt_host = "192.168.1.x"; // Your MTTQ broker IP address
@@ -205,6 +205,7 @@ You can use this proximity value to setup Automations based on room presence in 
 
 For example, you can create a room presence binary sensor in Home Assistant like this:
 
+    ```yaml
     binary_sensor:
       - platform: template
         sensors:
@@ -212,6 +213,7 @@ For example, you can create a room presence binary sensor in Home Assistant like
             friendly_name: "Xavier Bedroom Presence"
             value_template: >-
               {{ states('sensor.mqtt_xavier_bedroom_proximity')|int > -10 }}
+    ```
 
 You will have to figure out the optimal proximity value to consider the device as "present" in the room. This will vary greatly based on the strength of your device's BT signal, room size, line of sight, etc.
 
