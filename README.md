@@ -34,8 +34,8 @@ Once the signal strength is retrieved, a proximity value ranging from 0 (closest
 2. Download [balenaEtcher](https://etcher.io).
 3. Copy the image to SD card using balenaEtcher. [Instructions here](https://www.raspberrypi.org/magpi/pi-sd-etcher/).
 4. Remove SD Card and re-insert it. There will be 2 partitions on the SD card, including one named `boot`.
-5. **[Enable SSH]** In the `boot` partition, create blank file (without any extension) in the root directory called `ssh`
-6. **[Setup WiFi]** In the `boot` partition, create file named a `wpa_supplicant.conf` in the root directory and enter your wi-fi network details:
+5. To enable SSH, in the `boot` partition create blank file (without any extension) in the root directory called `ssh`
+6. To setup the Wifi network, in the `boot` partition, create file named a `wpa_supplicant.conf` in the root directory and enter your wi-fi network details:
 
     ```
     country=US
