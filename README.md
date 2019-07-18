@@ -78,9 +78,6 @@ Once the signal strength is retrieved, a proximity value ranging from 0 (closest
     # Check that BT is working
     sudo service bluetooth start
     sudo service bluetooth status
-
-    # Reboot
-    sudo reboot
     ```
     
     Add SP profile to the bluetooth daemon.
