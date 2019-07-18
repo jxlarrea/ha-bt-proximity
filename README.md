@@ -209,10 +209,10 @@ For example, you can create a room presence binary sensor in Home Assistant like
 binary_sensor:
   - platform: template
     sensors:
-      xavier_office_presence:
+      xavier_bedroom_presence:
         friendly_name: "Xavier Bedroom Presence"
         value_template: >-
-          {{ states('sensor.mqtt_xavier_bedroom_proximity')|int > -10 }}
+          {{ states('sensor.xavier_bedroom_proximity')|int > -10 }}
 ```
 You will have to figure out the optimal proximity value (-10 above) to consider the device as "present" in the room. This will vary greatly based on the strength of your device's BT signal, room size, line of sight, etc.
 
