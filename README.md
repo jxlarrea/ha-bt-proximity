@@ -144,7 +144,7 @@ Once the signal strength is retrieved, a proximity value ranging from 0 (closest
     ```
     nano index.js
     ```
-    Then edit the first few lines with your own values for the MQTT Broker and tracked BT mac addresses:
+    Then edit the first few lines with your own values for the MQTT Broker connection and Bluetooth MAC addressed that you want tracked:
     
     ```
     // MQTT Broker details
