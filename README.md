@@ -222,7 +222,7 @@ You will have to figure out the optimal proximity value (-10 above) to consider 
 Once you setup binary sensors like the above for multiple rooms in your house, you can create a separate sensor to show the location of the tracked device:
 
 ```yaml
-binary_sensor:
+sensor:
   - platform: template
     sensors:
       xavier_home_location:
