@@ -4,7 +4,7 @@ var mqtt_host = "192.168.1.x"; // Your MQTT broker / Home Assistant IP Address
 var mqtt_port = 1883;
 var mqtt_user = "mqtt_username";
 var mqtt_password = "mqtt_password";
-var mqtt_room = "bedroom" // Location where the Raspberry Pi Zero device will be located
+var mqtt_room = "bedroom"; // Location where the Raspberry Pi Zero device will be located
 
 
 // Tracked BT mac addresses
