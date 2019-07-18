@@ -99,7 +99,7 @@ Once the signal strength is retrieved, a proximity value ranging from 0 (closest
     
  5. Install Mosquitto MQTT Broker client: 
  
-    ```console
+    ```
     # Get repository key
     wget http://repo.mosquitto.org/debian/mosquitto-repo.gpg.key
 
