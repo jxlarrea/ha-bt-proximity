@@ -207,7 +207,7 @@ binary_sensor:
       xavier_bedroom_presence:
         friendly_name: "Xavier Bedroom Presence"
         delay_off:
-          minutes: 1 
+          seconds: 30 
         value_template: >-
           {% if not (states('sensor.mqtt_xavier_bedroom_proximity') == 'unknown') and (states('sensor.mqtt_xavier_bedroom_proximity')|int > -10) %}
             true
