@@ -69,35 +69,36 @@ Once the signal strength is retrieved, a proximity value ranging from 0 (closest
     sudo reboot
     ```
 4. Setup Bluetooth:
-    * Install the latest bluetooth drivers and firmware:
-    
-        ```
-        #install bluetooth drivers for Pi Zero W
-        sudo apt-get install pi-bluetooth
 
-        #verify that bluetooth is working
-        sudo service bluetooth start
-        sudo service bluetooth status
+    Install the latest bluetooth drivers and firmware:
+    ```
+    #install bluetooth drivers for Pi Zero W
+    sudo apt-get install pi-bluetooth
 
-        #reboot
-        sudo reboot
-        ```
-    * Add SP profile to the bluetooth daemon.
+    #verify that bluetooth is working
+    sudo service bluetooth start
+    sudo service bluetooth status
+
+    #reboot
+    sudo reboot
+    ```
     
-        ```
-        sudo nano /etc/systemd/system/dbus-org.bluez.service 
-        ```
-    * Add ' -C' at the end of the 'ExecStart=' line, to start the bluetooth daemon in 'compatibility' mode. Add a new 'ExecStartPost='   immediately after that line, to add the SP Profile. The two lines should look like this:
+    Add SP profile to the bluetooth daemon.
+    ```
+    sudo nano /etc/systemd/system/dbus-org.bluez.service 
+    ```
     
-        ```
-        ExecStart=/usr/lib/bluetooth/bluetoothd -C
-        ExecStartPost=/usr/bin/sdptool add SP
-        ```
-    * Save and reboot
+    Add ' -C' at the end of the 'ExecStart=' line, to start the bluetooth daemon in 'compatibility' mode. Add a new 'ExecStartPost='   immediately after that line, to add the SP Profile. The two lines should look like this:
+    ```
+    ExecStart=/usr/lib/bluetooth/bluetoothd -C
+    ExecStartPost=/usr/bin/sdptool add SP
+    ```
     
-        ```
-        sudo reboot
-        ``` 
+    Save and reboot
+    ```
+    sudo reboot
+    ``` 
+    
  5. Install Mosquitto MQTT Broker: 
  
     ```
