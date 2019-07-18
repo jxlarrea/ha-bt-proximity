@@ -58,12 +58,12 @@ Once the signal strength is retrieved, a proximity value ranging from 0 (closest
 1. SSH into the Raspberry Pi (username: pi password: raspberry)
 2. Change the default password:
 
-    ```
+    ```sh
     sudo passwd pi
     ```
 3. Upgrade packages and Raspbian to the latest version:
 
-    ```
+    ```sh
     sudo apt-get update
     sudo apt-get upgrade -y
     sudo apt-get dist-upgrade -y
