@@ -192,7 +192,7 @@ Once the signal strength is retrieved, a proximity value ranging from 0 (closest
     sudo systemctl start ha-bt-proximity.service
     ```
     
-    **NOTE:** If you need to modify the index.js script in the future, make sure to restart the service using:
+    **NOTE:** If you need to modify the `index.js` script in the future, make sure to restart the service using:
     ```
     sudo systemctl restart ha-bt-proximity.service
     ```
