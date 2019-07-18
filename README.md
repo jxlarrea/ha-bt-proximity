@@ -72,7 +72,7 @@ Once the signal strength is retrieved, a proximity value ranging from 0 (closest
     Install the latest bluetooth drivers and firmware:
     ```
     # Install BT drivers
-    sudo apt-get install pi-bluetooth
+    sudo apt-get install pi-bluetooth -y
 
     # Check that BT is working
     sudo service bluetooth start
@@ -111,12 +111,12 @@ Once the signal strength is retrieved, a proximity value ranging from 0 (closest
     # Update cache and install 
     apt-cache search mosquitto
     sudo apt-get update
-    sudo apt-get install libmosquitto-dev mosquitto mosquitto-clients
+    sudo apt-get install libmosquitto-dev mosquitto mosquitto-clients -y
     ```
  6. Install Node.js:
  
     ```
-    sudo apt-get install nodejs npm
+    sudo apt-get install nodejs npm -y
     ```
 7. Install the ha-bt-proximity script:
 
