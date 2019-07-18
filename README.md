@@ -20,7 +20,7 @@ Once the signal strength is retrieved, a proximity value ranging from 0 (closest
     ```
     sensor:
         - platform: mqtt
-          state_topic: 'location/bedroom/B1:F1:XX:69:1E:ZZ'
+          state_topic: 'location/bedroom/00:00:00:00:00:00'
           value_template: '{{ value_json.proximity }}'
           unit_of_measurement: 'level'
           name: 'Xavier Bedroom Proximity'
@@ -158,8 +158,8 @@ Once the signal strength is retrieved, a proximity value ranging from 0 (closest
     // Tracked BT mac addresses
 
     var owners = [
-    "B1:F1:XX:69:1E:ZZ", // Pixel 2 Bluetooth Mac Address;
-    "B2:F6:YY:69:CC:AA" // You can track multiple devices, just keep adding them to the array;
+    "00:00:00:00:00:00", // Pixel 2 Bluetooth Mac Address;
+    "11:11:11:11:11:11" // You can track multiple devices, just keep adding them to the array;
     ];
     ```
     **NOTE:** The mac addresses *MUST* match those entered previously in the Home Assistant sensor definition.
