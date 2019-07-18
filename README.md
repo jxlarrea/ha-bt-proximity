@@ -53,7 +53,7 @@ Once the signal strength is retrieved, a proximity value ranging from 0 (closest
 
 ### Raspberry Pi Zero W Configuration
 
-1. SSH into the Raspberry Pi (password: raspberry)
+1. SSH into the Raspberry Pi (username: pi password: raspberry)
 2. Change the default password:
 
     ```
