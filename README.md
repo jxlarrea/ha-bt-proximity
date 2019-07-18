@@ -219,6 +219,25 @@ binary_sensor:
 ```
 You will have to figure out the optimal proximity value (-10 above) to consider the device as "present" in the room. This will vary greatly based on the strength of your device's BT signal, room size, line of sight, etc.
 
+Once you setup binary sensors like the above for multiple rooms in your house, you can create a separate sensor to show the location of the tracked device:
+
+```yaml
+binary_sensor:
+  - platform: template
+    sensors:
+      xavier_home_location:
+        friendly_name: "Xavier Home Location"
+        value_template: >-
+          {% if is_state('binary_sensor.xavier_bedroom_presence', 'on') %}
+            Bedroom
+          {% elif is_state('binary_sensor.xavier_office_presence', 'on') %}
+            Office
+          {% elif is_state('binary_sensor.xavier_living_room_presence', 'on') %}
+            Living Room        
+          {% else %}
+            Unknown
+          {% endif %}
+```
 
 ### Acknowledgements 
 
