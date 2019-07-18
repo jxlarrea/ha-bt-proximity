@@ -59,7 +59,7 @@ Once the signal strength is retrieved, a proximity value ranging from 0 (closest
     ```
     sudo passwd pi
     ```
-3. Update Raspbian and upgrade the Raspberry Pi Zero W firmware:
+3. Upgrade packages and Raspbian to the latest version:
 
     ```
     sudo apt-get update
