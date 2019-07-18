@@ -27,7 +27,6 @@ function execute(command, callback){
 
 var cmd_rfcomm = "rfcomm connect 0 ";
 var cmd_hcitool = "hcitool rssi ";
-var rgx = /dev_found: (.*) type (.*) rssi (.*) flags/g
 var mqtt_topic = "location";
 
 
