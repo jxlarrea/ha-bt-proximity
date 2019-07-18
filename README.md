@@ -211,7 +211,7 @@ binary_sensor:
         delay_off:
           seconds: 30 
         value_template: >-
-          {% if not (states('sensor.mqtt_xavier_bedroom_proximity') == 'unknown') and (states('sensor.mqtt_xavier_bedroom_proximity')|int > -10) %}
+          {% if not (states('sensor.xavier_bedroom_proximity') == 'unknown') and (states('sensor.xavier_bedroom_proximity')|int > -10) %}
             true
           {% else %}
             false
