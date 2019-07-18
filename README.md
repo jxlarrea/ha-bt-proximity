@@ -203,9 +203,8 @@ If all went well, you will now see in Home Assistant the previously added sensor
 
 You can use this proximity value to setup Automations based on room presence in your home or even place multiple Raspberry Pi Zero W's around your place to triangulate your position.
 
-For example, you can create a room presence binary sensor based on the sensor proximity value:
+For example, you can create a room presence binary sensor in Home Assistant like this:
 
-    ```
     binary_sensor:
       - platform: template
         sensors:
@@ -213,9 +212,8 @@ For example, you can create a room presence binary sensor based on the sensor pr
             friendly_name: "Xavier Bedroom Presence"
             value_template: >-
               {{ states('sensor.mqtt_xavier_bedroom_proximity')|int > -10 }}
-    ```
 
-You will have to figure out the optimal value to consider the device a present in the room. This will vary greatly based on the strength of your device's BT signal, room size, line of sight, etc.
+You will have to figure out the optimal proximity value to consider the device as "present" in the room. This will vary greatly based on the strength of your device's BT signal, room size, line of sight, etc.
 
 
 ### Acknowledgements 
