@@ -27,9 +27,7 @@ var mqtt_topic = "location";
 
 function getRssiAndPublish(owner) {
 
-	var cmd_rfcomm = `rfcomm connect 0 ${owner} 10`;
-	execute(cmd_rfcomm, function (result, error) {
-		var cmd_hcitool = `hcitool rssi ${owner}`;
+		var cmd_hcitool = `hcitool cc ${owner} && hcitool rssi ${owner}`;
 
 		execute(cmd_hcitool, function (result_rssi, error_rssi) {
 			var match = result_rssi.match(/RSSI return value: (.*)/);
@@ -38,7 +36,7 @@ function getRssiAndPublish(owner) {
 
 			if (match && match.length > 0) {
 				rssi = parseInt(match[1]);
-			} 
+			}
 
 			var proximity = rssi;
 
@@ -55,9 +53,6 @@ function getRssiAndPublish(owner) {
 			execute(mqtt_command, function (result_mqtt, error_mqtt) { });
 
 		});
-
-	});
-
 }
 
 var job = new CronJob({
@@ -71,5 +66,3 @@ var job = new CronJob({
 });
 
 job.start();
-
-
