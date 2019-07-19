@@ -80,7 +80,10 @@ Once the signal strength is retrieved, a proximity value ranging from 0 (closest
     sudo service bluetooth start
     sudo service bluetooth status
     ```
-    
+    To avoid running the script using sudo, modify permissions for `hcitool`.
+    ```
+    sudo setcap cap_net_raw+ep /usr/bin/hcitool
+    ```    
     Add SP profile to the bluetooth daemon.
     ```
     sudo nano /etc/systemd/system/dbus-org.bluez.service 
