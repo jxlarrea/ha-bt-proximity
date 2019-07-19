@@ -18,85 +18,52 @@ var owners = [
 
 var CronJob = require('cron').CronJob;
 
-var lastseen = [];
-
 var exec = require('child_process').exec;
-function execute(command, callback){
-    exec(command, function(error, stdout, stderr){ callback(stdout, stderr); });
+function execute(command, callback) {
+	exec(command, function (error, stdout, stderr) { callback(stdout, stderr); });
 };
 
-var cmd_rfcomm = "rfcomm connect 0 ";
-var cmd_hcitool = "hcitool rssi ";
 var mqtt_topic = "location";
-
-
-function getTime() {
-
-	return "[" + (new Date()).toJSON().slice(0, 19) + "] ";
-}
-
 
 function getRssiAndPublish(owner) {
 
 	var cmd_rfcomm = `rfcomm connect 0 ${owner} 10`;
-	execute(cmd_rfcomm, function(result, error){
-
+	execute(cmd_rfcomm, function (result, error) {
 		var cmd_hcitool = `hcitool rssi ${owner}`;
 
-        	execute(cmd_hcitool, function(result_rssi,error_rssi) {
-			var match =  result_rssi.match(/RSSI return value: (.*)/);
+		execute(cmd_hcitool, function (result_rssi, error_rssi) {
+			var match = result_rssi.match(/RSSI return value: (.*)/);
 
 			var rssi = -200;
 
 			if (match && match.length > 0) {
 				rssi = parseInt(match[1]);
-			} else {
+			} 
+
+			var proximity = rssi;
+
+			if (proximity > 0) {
+				proximity = 0;
 			}
 
+			if (proximity < -100) {
+				proximity = -100;
+			}
 
-	                var last = lastseen.find(function(item) {
-     	                   return item.owner === owner;
-        	        });
+			var mqtt_topic_path = mqtt_topic + "/" + mqtt_room + "/" + owner;
+			var mqtt_command = `mosquitto_pub -h "${mqtt_host}" -p "${mqtt_port}" -u "${mqtt_user}" -P "${mqtt_password}" -t "${mqtt_topic_path}" -m "{\\\"proximity\\\":${proximity},\\\"name\\\":\\\"${owner}\\\"}"`;
+			execute(mqtt_command, function (result_mqtt, error_mqtt) { });
 
-
-               		if (!last) {
-
-                        	last = {"owner":owner,"proximity":-300};
-                        	lastseen.push(last);
-                	}
-
-                        var proximity = rssi;
-
-                        if (proximity > 0) {
-                                proximity = 0;
-                        }
-
-
-                        if (proximity < -100) {
-                                proximity = -100;
-                        }
-
-
-                	if (last.proximity!=proximity) {
-
-                        	var mqtt_topic_path = mqtt_topic + "/" + mqtt_room + "/" + owner;
-				var mqtt_command = `mosquitto_pub -h "${mqtt_host}" -p "${mqtt_port}" -u "${mqtt_user}" -P "${mqtt_password}" -t "${mqtt_topic_path}" -m "{\\\"proximity\\\":${proximity},\\\"name\\\":\\\"${owner}\\\"}"`;
-				last.proximity = proximity;
-        			execute(mqtt_command, function(result_mqtt, error_mqtt){
-				});
-                	}
-
-	        });
+		});
 
 	});
 
 }
 
-
 var job = new CronJob({
 	cronTime: '0,30 * * * * *',
-	onTick: function() {
-		owners.forEach(function(owner) {
+	onTick: function () {
+		owners.forEach(function (owner) {
 			getRssiAndPublish(owner);
 		});
 	},
@@ -104,3 +71,5 @@ var job = new CronJob({
 });
 
 job.start();
+
+
