@@ -211,6 +211,7 @@ binary_sensor:
     sensors:
       xavier_bedroom_presence:
         friendly_name: "Xavier Bedroom Presence"
+        device_class: occupancy
         delay_off:
           seconds: 30 
         value_template: >-
