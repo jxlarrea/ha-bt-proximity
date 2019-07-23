@@ -6,7 +6,7 @@ This is a complete DIY solution for room presence/proximity detection in [Home A
 
 Once the signal strength is retrieved, a proximity value ranging from 0 (closest proximity) to -100 (undetectable) is calculated and pushed to a MQTT Broker ([Mosquitto](https://mosquitto.org/)) running in Home Assistant. From there, you can setup sensors to determine the presence in a room (or relative distance) of a particular user. These sensors can be useful for triggering Automations based on presence (like turning lights on when someone walks into a room, turning an AC off when a room is empty, and more).
 
-**NOTE: This approach only works with Bluetooth Classic and is not compatible with Bluetooth Low Energy (BLE) devices.**
+**NOTE: This approach is suitable for Bluetooth Classic and is not compatible with Bluetooth Low Energy (BLE) devices.**
 
 ![Sensor Card](https://i.imgur.com/gLsX9vR.png)
 
